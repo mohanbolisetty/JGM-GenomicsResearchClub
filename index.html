@@ -1,0 +1,438 @@
+<html>
+    <head>
+    
+    	<title>Single cell biology</title>
+    	
+ 		<meta name="author" content="Mohan Bolisetty">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+        
+        <link rel="stylesheet" href="css/reveal.css">
+        <link rel="stylesheet" href="css/theme/white.css">
+        
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+        
+        <script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+
+    </head>
+    
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                	<h3> Interactive analysis and exploration of single cell rna-seq data </h3>
+                	<br></br>
+                	<p> Mohan Bolisetty <br> Computational Biologist </br></p>
+                </section>
+                
+                <section>
+	                <section>
+	                	<h3> Conventional profiling of tissues </h3>
+	                	<img src="img/bigblackcircle.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+	                </section>
+	                
+                	<section>
+                		<p>But really, we know that there are many different cell types present by looking under a microscope 
+                		<br>
+                		So that big cirle really is:
+                		</br></br>
+                		<img src="img/circlepack.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+                		</p>
+                	</section>
+                	
+					<section>
+             			<h3> Deconvoluting tissues into single cells </h3>
+             			<img src="img/classificationNeurons.png" width="75%" style="background:none; border:none; box-shadow:none; ">
+             		</section>
+             		
+             		
+                	
+                </section>
+
+                <section>
+                	<section>
+	                	<h3> Single Cell Transcriptomics </h3>
+	                	<p>
+	                		Defining the genes that specify cell types and states in a diverse array of tissues
+	                	</p>
+	                </section>
+	                
+	                <section>
+	                	<h3> Brief history of single cell profiling </h3>	                		                	
+	                </section>
+
+	                <section>
+	                	<p> It starts with picking cells into a tube </p>
+	                	<img src="img/micropipetting.png" width="75%" style="background:none; border:none; box-shadow:none; ">
+	                	<p> And making an RNA-seq library</p>          		               
+	                </section>
+	                
+	                <section>
+	                	<p> It evolved into FACS sorting into plates </p>
+	                	<img src="img/facssorting.png" width="45%" style="background:none; border:none; box-shadow:none; ">
+	                	<p> Using automated robots to make 10 - 100's of libraries</p>	                		                		               	
+	                </section>
+
+	                <section>
+	                	<p> First generation of microfludics - Fluidigm C1 </p>
+	                	<img src="img/c1chip.png" width="45%" style="background:none; border:none; box-shadow:none; ">
+	                	<p> Capture up to 96 cells in a chamber</p>	                		                		               	
+	                </section>
+
+	                <section>
+	                	<p> C1 Capture Chamber </p>
+	                	<img src="img/c1capturechamber.png" width="45%" style="background:none; border:none; box-shadow:none; ">
+	                </section>
+
+	                <section>
+	                	<h3> Droplet based methods revolutionize single cell profiling</h3>	                	
+	                	<p> Plates -> Droplets <br><br> 10's -> 1000's of cells</p>
+	                </section>
+	                
+	                <section>
+                		<p> Capturing cells in 1nl oil droplet</p>
+						<iframe frameborder=0 width=95% height=586 marginheight=0 marginwidth=0 scrolling=no data-src="img/mmc4.mp4"></iframe>
+	                </section>
+
+	                <section>
+                		<h3> 10X Genomics </h3> 
+                		<p> Scales to 48,000 cells per single 7 min Run </p>
+						<img src="img/10xgenomics.png" width="85%" style="background:none; border:none; box-shadow:none; ">
+	                </section>
+	                
+                	<section>
+	                <h3>Experimental methods for scRNA-seq data:</h3>
+	                <ul>
+								<li>CEL-seq (1,2)</li>
+								<li>Drop-seq</li>
+								<li>InDrop</li>
+								<li>MARS</li>							
+								<li>SCRB</li>
+								<li>Smart-seq2</li>
+								<li>SMARter</li>
+								<li>10X Chromium </li>
+								<li>...</li>
+					</ul>
+					</section>
+				</section>
+				<section>
+                	<section>
+                		<h3> Bioinformatics </h3>
+                		<br></br>
+                		<h4> Reads -> Matrix -> Figures -> Hypothesis </h4>
+                		
+                	</section>
+
+                	<section>
+                		<h3> Reads -> Matrix: Pipelines </h3>
+                		<ul>
+                			<li>FASTQ Generation</li>
+                			<li>Trimming</li>
+                			<li>Alignments</li>
+                			<li>QC metrics generation</li>                			
+                			<li>Feature quantitation (expression, peak calling ...)</li>
+                			<li>Visualization with browser tracks </li>
+                		</ul>
+                	</section>
+                	
+                	<section>
+                		<h3> Command line -> Interactive pipelines </h3>
+                		<p> Tools initially developed with command line interface, can now be launched with an interactive interface. Lots of different options with different advantages and disadvantages. Although, the learning curve is still present, not having to be well versed in the Linux (and cluster) environment opens up sequencing data analysis.
+                			<ul>
+                				<li>Galaxy</li>
+                				<li>DNA Nexus</li>
+                				<li>Basespace</li>
+                				<li>And various other Portals</li>                				              				
+                			</ul>
+                		<br>Additionally, container based pipelines increase reproducibility.
+                		</p>
+                	</section>
+                	
+                	<section>
+                		<p>Once developed and tested this phase of analyis has to be run once for most of the samples.<br><br> Nearly every other analysis can start at a feature matrix</p>
+                	</section>
+                </section>
+                
+                <section>
+                	<section>
+                		<h3> Matrix -> Figure </h3>
+                		<br>
+                		<img src="img/expression.png" width="65%" style="background:none; border:none; box-shadow:none; ">                		
+                	</section>           
+                	     	
+                	<section>
+                		<p> Single cell data is sparse - lots and lots of zeros </p>
+                		<img src="img/ZerosIn10XData.png" width="50%" style="background:none; border:none; box-shadow:none; "> 		
+                	</section>
+                								                
+               		<section>
+                		<h3> Computational approaches </h3>
+                		<p> The primary goal of every single cell experiment is to describe the heterogeneity of cell types present in the starting tissue population. This involves:</p>
+                		<ul>
+                			<li>Filtering low quality cells</li>
+                			<li>Filtering really sparse expressed genes</li>
+                			<li>Normalize gene expression</li>
+                			<li>Feature selection for clustering</li>
+                			<li>Dimensionality reduction</li>
+                			<li>Cluster identification</li>
+                			<li>Marker gene identification</li>
+                			<li>Cell type inference</li>                			                			                			
+                		</ul>
+                	</section>
+                	
+                	<section>
+                		<p> 80 different packages for this analysis and counting ... <br><br>
+                		https://github.com/seandavi/awesome-single-cell</p>               	
+                	</section>
+                	
+                	<section>
+                		<p> Single cell data is rich in information. A single sample will have many cell types with many cell states. <br><br> Unsupervised approaches can only describe all this information to a certain extent. The biologist's knowledgebase and insight is essential to lead the computational scientists.</p>
+                	</section>
+                	
+                </section>
+                
+                <section>
+                	<section>
+                		<h3>Case study #1 - Single cell RNA-seq of the mouse thalamus (Zhang lab)</h3>
+                	</section>
+                	
+                	<section>
+                		<h3> Summary stats </h3>
+                		<img src="img/summaryStats.png" width="50%" style="background:none; border:none; box-shadow:none; ">
+                	</section>
+                	
+               		<section>
+               			<h3>Genes and Transcripts</h3>
+               			<img src="img/qc.png" width="80%" style="background:none; border:none; box-shadow:none; ">			
+               		</section>
+               		
+					<section>
+						<h3> Clusters </h3>
+						<img src="img/clusters.png" width="80%" style="background:none; border:none; box-shadow:none; ">                		                
+					</section>               		
+
+					<section>
+						<h3> Clusters </h3>
+						<img src="img/dbscan.png" width="80%" style="background:none; border:none; box-shadow:none; ">                		                
+					</section>
+					               		
+					<section>
+						<h3> Clusters in 3D</h3>
+						<iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plot.ly/~mbolisetty/1556.embed"></iframe>
+						
+					</section>
+					
+					<section>
+						<h3> Markers </h3>
+						<img src="img/markers.png" width="100%" style="background:none; border:none; box-shadow:none; "> 					
+					</section>               		
+                	
+                	<section>
+                		<p> All of these are static plots, with low information content, when the data was high informational content. 
+                		<br><br>We can also share excel sheets with relevant information but that is again non-visual and a static interpretation of the data. 
+                		<br><br>
+                		Need to facilitate the scientists in each (or multiple) group to explore their data with their expertise.
+                		<br><br>                		
+                		</p>
+                	</section>                     	                
+                </section>
+                
+                <section>
+					<section>
+						<h3> CellView: A web application to visualize and explore single cell RNA-seq data </h3>
+						<p>  
+						<br>
+						The aim of CellView is to provide you intutive access to your dataset: 
+						<br>
+							<ul>
+								<li>validate clustering - cell types</li>
+								<li>explore gene expression patterns</li>
+								<li>uncover subclusters in the data</li>
+								<li>discover markers that define subclusters</li>
+								<li>identify downstream algorithms and analysis</li>
+							</ul> 
+						</p>
+					</section>
+
+             		<section>
+             			<h3> The inspiration: 732,000 and counting </h3>
+             			<iframe width="600" height="400" frameborder="0" scrolling="no" data-src="https://plot.ly/~mbolisetty/1562.embed"></iframe>
+             			<p> There are only so many violin plots and heatmaps any computational scientist can make before ...</p>
+             		</section>
+             		
+					
+					
+					<section>
+						<h3> Inputs </h3>
+						<p>
+							Inputs into CellView are processed and clustered data based on the package of your choice.
+							<br>
+							Three matrices that contain the following information:
+							<ul>
+								<li>log2cpm - Normalized expression matrix</li>
+								<li>tsne.data - Visualization of clustering and cluster IDs</li>
+								<li>featuredata - Dictionary to convert gene IDs to human understandable gene names</li>
+							</ul> 												
+						</p>
+					</section>
+					
+					<section>
+						<h3> Inputs</h3>
+						<p> Save the 3 dataframes into a single R object </p>
+						<pre><code data-trim contenteditable>
+log2cpm<-read.csv('Data/Expression.csv',row.names=1,stringsAsFactors = F, as.is=T, check.names=F)
+featuredata<-read.csv('Databases/FeatureData.csv',row.names=1,stringsAsFactors = F, as.is=T,sep=',’)
+tsne.data<-read.csv('Data/TNSE_dbscan.csv',row.names=1,stringsAsFactors = F,as.is=T)
+
+save(log2cpm,featuredata,tsne.data,file=‘Filename.Rds’)
+
+    						</code></pre>
+    					<br>
+    					<p> This single *.Rds file is uploaded to CellView</p>	             	
+					</section>
+				</section>
+				
+				<section>
+					<section>
+						<p> Lets explore the same Thalamus dataset using using CellView 
+						<br><br>
+						We will begin by exploring some of the markers identified in this dataset
+						<br><br>
+Apod,Lgals1,Col1a1,Vtn,Sparc,Junb,Klf2,Col4a1,Lum,Dcn,Igf2,Nupr1,Cxcl12,Ptn,Col1a2,S100a6,Ptgds,Igfbp2,Col3a1,Sepp1,Lgmn,Nfkbia,Hexb,Cd83,Ccl4,Ccl3,Ccl12,Ccl2,Junb,Ctsd,Ftl1,Tyrobp,C1qa,C1qc,C1qb,Ctss,Fcrls,P2ry12,Tmsb4x,Cst3,B2m,Fcer1g,Sst,Pvalb,Meg3,Gad1,Atp1b1,Hmgb2,H2afz,Cldn5,Sparc,Hba-a2,Hba-a1,Bsg,Hbb-bs,Hbb-bt,Igfbp7,Slc16a1,Itm2a,Rgs5,Aqp4,Pla2g7,Ckb,Id2,Aldoc,Clu,Ndrg2,Mt1,Mt3,Cpe,Fabp7,Gja1,Apoe,Ptn,Sparcl1,Hes5,Id3,Plpp3,Fabp5,Cst3,Slc1a2,Atp1a2,Dbi,Cldn5,Ctla2a,Sparc,Junb,Klf2,Bsg,Igfbp7,Slc16a1,Tmsb4x,Itm2a,Rgs5,Gap43,Meg3,Nap1l5,Pcp4,Cck,Mbp,Cnp,Mobp,Mag,Sirt2,Ugt8a,Cldn11,Plp1						
+						</p>												
+					</section>
+                </section>
+
+				<section>
+					<section>
+						<h3> Validation of a novel population of dendritic cells </h3>
+					</section>
+					
+					<section>
+	                	<h3> Single-cell RNA-seq reveals new types of human blood dendritic cells, monocytes, and progenitors </h3>
+	                	<br></br>
+	                	<p> Alexandra-Chloe Villani, Rahul Satija, et al., <br> Science 21 Apr 2017 </br></p>							
+					</section>
+					
+                	<section>
+                		<h3> Clustering </h3>
+                		<img src="img/tsne.png" width="80%" style="background:none; border:none; box-shadow:none; ">
+					</section>
+					
+					<section>
+                		<h3> Markers of DC5 - New population</h3>
+                		<ul>
+                			<li>Identified 11 new markers that define this population</li>
+                			<img src="img/dc5.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                		</ul>
+                	</section>
+
+				</section>
+                                                
+                <section>
+                	<section>
+                		<h3> Can we find these in our data - PBMCs</h3>
+                		<iframe width="900" height="800" frameborder="0" scrolling="no" src="https://plot.ly/~mbolisetty/1575.embed"></iframe>
+                	</section>
+                	
+                	<section>
+                		<ul>
+                			<li>NK cells</li>
+                			<li>T cells</li>
+                			<li>B cells</li>
+                			<li>Myeloid cells</li>                			                			                			
+                			<li>T cells</li>
+                			<li>pDCs</li>
+                			<li>Doublets</li>
+                			<li>DCs</li>                			                			                			                			
+                		</ul>
+                	</section>
+                </section>
+                
+                <section>
+                	<p> Lets explore this PBMC dataset using using CellView </p>
+                </section>
+					
+                <section>                	
+                	<section>
+                		<h3> Cluster6 - pdc markers </h3>
+                		<img src="img/pdcsinpbmcs.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                	</section>
+
+                	<section>
+                		<h3> Cluster8 - Myeloid DC markers </h3>
+                		<img src="img/myeloiddcs.png" width="100%" style="background:none; border:none; box-shadow:none; ">
+                		<p> We can identify CD1C, CD141 and AS DCs in PBMCs. AS DCs cluster away from the restof the myeloid DCs. </p>
+                	</section>
+                </section>    
+                
+				<section>
+             		<h3> Acknowledgments </h3>
+             		<p>
+	             		<ul>
+		             		<li>Siva V</li>
+		             		<li>Santhosh Sivajothi</li>
+		             		<li>Lili Sun</li>
+		             		<li>Paul Robson</li>
+		             		<br>
+		             		<li>Joshy George</li>
+		             		<li>KyungIn Kim</li>
+		             		<br>
+		             		<li>Karolina Palucka</li>	             		
+		             		<li>Michael Stitzel</li>
+		             		<br>
+		             		<li>Sandeep Namburi</li>
+		             		<li>Aditya Kovuri</li>		             			             			             		
+	             		</ul>
+             		</p>
+             	</section>
+
+             	
+             	<section>
+             		<h3> Feedback & Questions? </h3>
+             		<br></br>
+             		<br></br>
+             		<p>email me: mohan.bolisetty@jax.org </p>
+             		<p>slides: mohanbolisetty.github.io/JAX-GenomicsResearchClub/
+             	</section>
+                           
+                                
+            </div>
+        </div>
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+
+			// Full list of configuration options available at:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Optional reveal.js plugins
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, condition: function() { return !!document.querySelector( 'pre code' ); }, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/notes/notes.js', async: true }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
